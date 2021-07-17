@@ -1,44 +1,24 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import Youtube from '../api/Youtube';
+import React, { useEffect, useState } from 'react';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
 import SearchBarHooks from './SearchBarHooks';
+import useVideos from '../hooks/useVideos';
 
 const AppHooks = () => {
-  const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
-
-  const onSearchSubmit = async (term) => {
-    console.log(term);
-    const response = await Youtube.get('search', {
-      params: { q: term, maxResults: 5 },
-    });
-    return response;
-  };
-
-  const callOnSearchSubmit = useCallback((term) => {
-    const response = onSearchSubmit(term);
-
-    response
-      .then((response) => {
-        console.log(response);
-        setVideos(response.data.items);
-        setSelectedVideo(response.data.items[0]);
-      })
-      .catch((error) => console.error(error));
-  }, []);
+  const [videos, setVideos] = useVideos('quranFM');
 
   useEffect(
     () => {
-      callOnSearchSubmit('quranfm');
+      setSelectedVideo(videos[0]);
     },
-    [callOnSearchSubmit],
+    [videos],
     { capture: true },
   );
 
   return (
     <div className="ui container">
-      <SearchBarHooks onSearchSubmit={callOnSearchSubmit} />
+      <SearchBarHooks onSearchSubmit={setVideos} />
       <div className="ui grid">
         <div className="ui row">
           <div className="ten wide column">
