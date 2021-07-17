@@ -25,7 +25,7 @@ const SearchBarHooks = ({ onSearchSubmit }) => {
     <div className="search-bar ui segment">
       <form className="ui form" onSubmit={onFormSubmit}>
         <div className="field">
-          <label>Search Videos</label>
+          <label>Search Videos from Youtube</label>
           <input
             type="text"
             onChange={onInputChange}
