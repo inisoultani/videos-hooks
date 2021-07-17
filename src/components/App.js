@@ -3,6 +3,7 @@ import SearchBar from './SearchBar';
 import Youtube from '../api/Youtube';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
+import SearchBarHooks from './SearchBarHooks';
 
 class App extends React.Component {
   state = {
@@ -38,7 +39,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="ui container">
-        <SearchBar onSearchSubmit={this.onSearchSubmit} />
+        {/* <SearchBar onSearchSubmit={this.onSearchSubmit} /> */}
+        <SearchBarHooks onSearchSubmit={this.onSearchSubmit} />
         <div className="ui grid">
           <div className="ui row">
             <div className="ten wide column">

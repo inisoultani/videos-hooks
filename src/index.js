@@ -1,5 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./components/App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/App';
+import AppHooks from './components/AppHooks';
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+ReactDOM.render(<AppHooks />, document.querySelector('#root'));
