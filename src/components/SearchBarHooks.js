@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../css/SearchBar.css';
 
 const SearchBarHooks = ({ onSearchSubmit }) => {
   const [term, setTerm] = useState('');
