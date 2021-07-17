@@ -28,23 +28,11 @@ const AppHooks = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  const onVideoSelected = (video) => {
-    setSelectedVideo(video);
-  };
-
   useEffect(
     () => {
       callOnSearchSubmit('quranfm');
     },
     [callOnSearchSubmit],
-    { capture: true },
-  );
-
-  useEffect(
-    () => {
-      console.log(selectedVideo);
-    },
-    [selectedVideo],
     { capture: true },
   );
 
@@ -57,7 +45,7 @@ const AppHooks = () => {
             <VideoDetail video={selectedVideo} />
           </div>
           <div className="six wide column">
-            <VideoList videos={videos} onSelect={onVideoSelected} />
+            <VideoList videos={videos} onSelect={setSelectedVideo} />
           </div>
         </div>
       </div>
